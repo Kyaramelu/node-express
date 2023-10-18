@@ -40,6 +40,8 @@ app.get('/user/:email', async (req, res) => {
       res.status(404).json({ status: "fail", message: "No user matching the email was found." })
       return
     }
+
+    res.status(200).json({ status: "success", user: user })
   } catch (err) {
     console.log(err)
     res.status(500).json({ status: "error", message: "We ran into an error." })
