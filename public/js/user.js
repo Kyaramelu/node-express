@@ -1,4 +1,4 @@
-function register(firstName, lastName, email, password) {
+function register(firstName, lastName, dob, email, password) {
   fetch('https://caramello.space/register', {
     method: 'POST',
     headers: {
@@ -7,6 +7,7 @@ function register(firstName, lastName, email, password) {
     body: JSON.stringify({
       firstName: firstName,
       lastName: lastName,
+      dob: dob,
       email: email,
       password: password
     }),
