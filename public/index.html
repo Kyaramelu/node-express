@@ -254,16 +254,15 @@
         }
       </style>
 
-      <div class="bg-white mt-5 rounded-xl text-sm text-gray-500 divide-y divide-indigo-50 overflow-x-auto shadow">
+      <div id="event-list"
+        class="bg-white mt-5 rounded-xl text-sm text-gray-500 divide-y divide-indigo-50 overflow-x-auto shadow">
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text">Сегодня:</div>
           <div class="text-left blue-text">07:30-8:00</div>
           <div class="text-center">Подъём, гигиенические процедуры</div>
           <div class="text-center"></div>
           <div class="text-right">пройдено</div>
-          <img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">
         </div>
-
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
@@ -271,7 +270,6 @@
           <div class="text-center">Зарядка</div>
           <div class="text-center"></div>
           <div class="text-right">пройдено</div>
-          <img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -280,7 +278,6 @@
           <div class="text-center">Завтрак</div>
           <div class="text-center"></div>
           <div class="text-right">пройдено</div>
-          <img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -289,7 +286,6 @@
           <div class="text-center">Работа проектных групп (полевые выезды по отдельному графику)</div>
           <div class="text-center"></div>
           <div class="text-right">пройдено</div>
-          <img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -298,7 +294,6 @@
           <div class="text-center">Полдник</div>
           <div class="text-center"></div>
           <div class="text-right">пройдено</div>
-          <img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -307,7 +302,6 @@
           <div class="text-center">Работа проектных групп (полевые выезды по отдельному графику)</div>
           <div class="text-center"></div>
           <div class="text-right">идёт</div>
-          <img src="images/rf.png" width="24" height="24" style="margin-left: 45px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -316,7 +310,6 @@
           <div class="text-center">Ужин</div>
           <div class="text-center"></div>
           <div class="text-right">уже близко</div>
-          <img src="images/clock.jpg" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -325,7 +318,6 @@
           <div class="text-center">Свободное время</div>
           <div class="text-center"></div>
           <div class="text-right">близко</div>
-          <img src="images/clock.jpg" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -334,7 +326,6 @@
           <div class="text-center">Мероприятие</div>
           <div class="text-center"></div>
           <div class="text-right">почти близко</div>
-          <img src="images/clock.jpg" width="16" height="16" style="margin-left: 48px;">
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
@@ -343,7 +334,6 @@
           <div class="text-center">Поздний ужин</div>
           <div class="text-center"></div>
           <div class="text-right">далеко</div>
-          <img src="images/good.png" width="16" height="16" style="margin-left: 48px;">
         </div>
       </div>
   </div>
@@ -354,5 +344,89 @@
   </div>
 
 </body>
+
+<script>
+  function checkEvent(start, end) {
+    const currentDate = new Date();
+
+    const targetDate = start
+    const endDate = end
+
+    if (currentDate < targetDate) {
+      return `<img src="images/clock.jpg" width="16" height="16" style="margin-left: 48px;">`
+    } else if (currentDate >= targetDate && currentDate < endDate) {
+      return `<img src="images/rf.png" width="24" height="24" style="margin-left: 45px;">`
+    } else {
+      return `<img src="images/checkmark.png" width="16" height="16" style="margin-left: 48px;">`
+    }
+  }
+
+  function updateEvents() {
+    const events = [
+      {
+        start: new Date(2023, 9, 19, 7, 30, 0),
+        end: new Date(2023, 9, 19, 8, 0, 0),
+        description: "Подъём, гигиенические процедуры",
+      },
+      {
+        start: new Date(2023, 9, 19, 8, 0, 0),
+        end: new Date(2023, 9, 19, 8, 30, 0),
+        description: "Зарядка",
+      },
+      {
+        start: new Date(2023, 9, 19, 8, 30, 0),
+        end: new Date(2023, 9, 19, 9, 0, 0),
+        description: "Завтрак",
+      },
+      {
+        start: new Date(2023, 9, 19, 9, 30, 0),
+        end: new Date(2023, 9, 19, 13, 0, 0),
+        description: "Работа проектных групп (полевые выезды по отдельному графику)",
+      },
+      {
+        start: new Date(2023, 9, 19, 14, 30, 0),
+        end: new Date(2023, 9, 19, 16, 0, 0),
+        description: "Полдник",
+      },
+      {
+        start: new Date(2023, 9, 19, 16, 30, 0),
+        end: new Date(2023, 9, 19, 18, 0, 0),
+        description: "Работа проектных групп (полевые выезды по отдельному графику)",
+      },
+      {
+        start: new Date(2023, 9, 19, 18, 0, 0),
+        end: new Date(2023, 9, 19, 19, 0, 0),
+        description: "Ужин",
+      },
+      {
+        start: new Date(2023, 9, 19, 19, 0, 0),
+        end: new Date(2023, 9, 19, 19, 30, 0),
+        description: "Свободное время",
+      },
+      {
+        start: new Date(2023, 9, 19, 19, 30, 0),
+        end: new Date(2023, 9, 19, 21, 0, 0),
+        description: "Мероприятие",
+      },
+      {
+        start: new Date(2023, 9, 19, 21, 0, 0),
+        end: new Date(2023, 9, 19, 21, 30, 0),
+        description: "Поздний ужин",
+      },
+    ];
+
+    for (let i = 0; i < events.length; i++) {
+      const event = events[i];
+      const eventRow = document.getElementsByClassName("invoice-table-row")[i];
+      const icon = checkEvent(event.start, event.end);
+
+      eventRow.innerHTML += icon;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    updateEvents()
+  });
+</script>
 
 </html>
