@@ -12,6 +12,7 @@ function register(name, email, password) {
   })
     .then(response => response.json())
     .then(data => {
+      console.log(data)
       saveData(data.user)
       console.log('Success:', data)
     })
