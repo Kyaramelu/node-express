@@ -43,13 +43,13 @@ app.use(session);
 
 app.post('/register', async (req, res) => {
   try {
-    await User.create({
+    const user = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
 
-    res.status(200).json({ status: "success", message: "Successfully created user account." })
+    res.status(200).json({ status: "success", message: "Successfully created user account.", user: user })
   } catch (err) {
     console.log(err)
     res.status(500).json({ status: "error", message: "We ran into an error." })
@@ -61,7 +61,7 @@ app.get('/user', async (req, res) => {
     const user = req.session.user
 
     if (!user) {
-      res.status(404).json({ status: "fail", message: "No user matching the email was found." })
+      res.status(404).json({ status: "fail", message: "No user was found, please login first." })
       return
     }
 
