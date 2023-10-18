@@ -6,6 +6,7 @@ import expressSession from "express-session";
 import cors from "cors"
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
+import MongoStore from "connect-mongo"
 
 const session = expressSession({
   store: MongoStore.create({ mongoUrl: config.server.database }),
