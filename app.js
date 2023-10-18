@@ -2,7 +2,7 @@ import bodyParser from "body-parser"
 import User from "./models/user.js"
 import mongoose from "mongoose";
 import express from "express";
-import session from "express-session";
+import expressSession from "express-session";
 import cors from "cors"
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
