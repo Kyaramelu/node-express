@@ -12,7 +12,7 @@ function register(name, email, password) {
   })
     .then(response => response.json())
     .then(data => {
-      saveData(JSON.parse(data.user))
+      saveData(JSON.stringify(data.user))
       console.log('Success:', data)
     })
     .catch((error) => {
