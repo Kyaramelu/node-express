@@ -7,6 +7,21 @@ import cors from "cors"
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
+const session = expressSession({
+  store: MongoStore.create({ mongoUrl: config.server.database }),
+  name: "secure",
+  cookie: {
+    domain: ".caramello.space",
+    sameSite: "lax",
+    secure: true,
+    maxAge: 1000 * 60 * 60 * 24 * 90,
+    httpOnly: true
+  },
+  secret: "azdzajdazpjdzajdzapazdazsda",
+  saveUninitialized: true,
+  resave: true
+})
+
 mongoose.connect("mongodb://localhost:27017/myapp")
   .then(() => {
     console.log("Successfully connected to database.")
@@ -20,6 +35,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
 
+app.set("trust proxy", 1)
 app.use(bodyParser.json());
 app.use(cors())
 app.use(session({
