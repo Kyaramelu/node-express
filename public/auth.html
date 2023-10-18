@@ -8,11 +8,11 @@
   <!-- Right: Login Form -->
   <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
     <h1 class="text-2xl font-semibold mb-4">Login</h1>
-    <form action="#" method="POST">
-      <!-- Username Input -->
+    <form id="login" action="#" method="POST">
+      <!-- Email Input -->
       <div class="mb-4">
-        <label for="username" class="block text-gray-600">Username</label>
-        <input type="text" id="username" name="username"
+        <label for="email" class="block text-gray-600">Email</label>
+        <input type="text" id="email" name="email"
           class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
           autocomplete="off">
       </div>
@@ -44,31 +44,40 @@
 </div>
 
 <script>
-  function login() {
-    function login(email, password) {
-      fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
+
+  document.getElementById('login').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+
+    login(email, password)
+  });
+
+  function login(email, password) {
+    fetch("https://caramello.space/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(data => {
-          localStorage.setItem("user", JSON.stringify(data.data))
-          console.log('Success:', data);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    }
+      .then(data => {
+        localStorage.setItem("user", JSON.stringify(data.user))
+        location.href = 'https://caramello.space/';
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
 </script>
