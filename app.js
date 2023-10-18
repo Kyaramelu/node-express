@@ -19,8 +19,15 @@ app.use(bodyParser.json());
 app.use(cors())
 app.use(session({
   secret: '87za4dza84d8a4zd5az1zad51daz',
-  resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  resave: true,
+  cookie: {
+    domain: ".caramello.space",
+    sameSite: "lax",
+    secure: true,
+    maxAge: 1000 * 60 * 60 * 24 * 90,
+    httpOnly: true
+  },
 }));
 
 app.post('/register', async (req, res) => {
