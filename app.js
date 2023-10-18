@@ -9,7 +9,7 @@ import path, { dirname } from 'path';
 import MongoStore from "connect-mongo"
 
 const session = expressSession({
-  store: MongoStore.create({ mongoUrl: config.server.database }),
+  store: MongoStore.create({ mongoUrl: "mongodb://localhost:27017/myapp" }),
   name: "secure",
   cookie: {
     domain: ".caramello.space",
