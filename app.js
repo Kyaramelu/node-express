@@ -2,6 +2,7 @@ import bodyParser from "body-parser"
 import User from "./models/user.js"
 import mongoose from "mongoose";
 import express from "express";
+import cors from "cors"
 
 mongoose.connect("mongodb://localhost:27017/myapp")
   .then(() => {
@@ -13,6 +14,7 @@ mongoose.connect("mongodb://localhost:27017/myapp")
 
 let app = express();
 app.use(bodyParser.json());
+app.use(cors())
 
 app.post('/register', async (req, res) => {
   try {
