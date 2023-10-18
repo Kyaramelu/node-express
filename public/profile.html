@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style/style.css" rel="stylesheet">
     <title>Малая Академия Наук</title>
+    <script src="./js/user.js" defer></script>
 </head>
 
 <body class="font-montserrat">
@@ -121,7 +122,8 @@
                     <span>Профиль</span>
                 </div>
 
-                <div class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">
+                <div id="profile-container"
+                    class="flex space-x-5 md:space-x-10 text-gray-500 items-center content-center text-base ">
                     <a class="flex items-center space-x-3 px-4 py-2 rounded-md  hover:bg-indigo-100"
                         href="settings.html">
                         <span>
@@ -143,7 +145,7 @@
                         <svg class="h-5 w-5 fill-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                             fill="currentColor">
                             <a class href="#">
-                                <span class="hidden sm:block">Григорьев Михаил</span>
+                                <span id="user-name" class="hidden sm:block"></span>
                                 <img class="rounded-full w-10 h-10 border-2 border-indigo-200 hover:border-indigo-300"
                                     src="images/pfp.jpg" alt srcset>
                         </svg>
@@ -209,11 +211,11 @@
                         <div>Учётная запись</div>
                     </div>
                     <div class="sticky-section">
-                        <div style="margin-bottom: 10px;">Имя: Михаил</div>
-                        <div style="margin-bottom: 10px;">Фамилия: Григорьев</div>
-                        <div style="margin-bottom: 10px;">Отчество: Григорьевич</div>
-                        <div style="margin-bottom: 10px;">Почта: email@mail.ru</div>
-                        <div style="margin-bottom: 10px;">Пароль: *******</div>
+                        <div id="firstname-display" style="margin-bottom: 10px;">Имя: Михаил</div>
+                        <div id="lastname-display" style="margin-bottom: 10px;">Фамилия: Григорьев</div>
+                        <div id="middlename-display" style="margin-bottom: 10px;">Отчество: Григорьевич</div>
+                        <div id="email-display" style="margin-bottom: 10px;"></div>
+                        <div id="password-display" style="margin-bottom: 10px;">Пароль: *******</div>
                     </div>
                 </div>
 
@@ -266,5 +268,20 @@
     </div>
 
 </body>
+
+<script>
+    const local = localStorage.getItem("user")
+    const user = local ? JSON.parse(local) : null
+
+    if (!user) {
+        location.href = "https://caramello.space/auth.html"
+    }
+    else {
+        document.getElementById("firstname-display").innerText = `Имя: ${user.email}`
+        document.getElementById("lastname-display").innerText = `Фамилия: ${user.email}`
+        document.getElementById("middlename-display").innerText = `Отчество: ${user.email}`
+        document.getElementById("email-display").innerText = `Почта: ${user.email}`
+    }
+</script>
 
 </html>
