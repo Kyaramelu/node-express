@@ -34,7 +34,7 @@ app.post('/register', async (req, res) => {
 app.get('/user/:email', async (req, res) => {
   try {
     const email = req.params.email;
-    const user = await User.findOne({ email: email })
+    const user = await User.findOne({ email: email }).select("-password")
 
     if (!user) {
       res.status(404).json({ status: "fail", message: "No user matching the email was found." })
