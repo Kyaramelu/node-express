@@ -63,7 +63,7 @@
           return response.json();
         })
         .then(data => {
-          localStorage.setItem("user", data.data)
+          localStorage.setItem("user", JSON.parse(data.data))
           console.log('Success:', data);
         })
         .catch((error) => {
