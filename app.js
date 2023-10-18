@@ -98,5 +98,18 @@ app.post('/login', async (req, res) => {
   }
 });
 
+
+app.post('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({ status: "error", message: "We ran into an error." });
+    } else {
+      res.status(200).json({ status: "success", message: "Successfully logged out." });
+    }
+  });
+});
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.listen(3000, () => console.log('Server started on port 3000'));

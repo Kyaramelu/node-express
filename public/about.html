@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="Represent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style/style.css" rel="stylesheet">
+    <link href="./style/style.css" rel="stylesheet">
     <title>Малая Академия Наук</title>
     <script src="./js/user.js" defer></script>
 </head>
@@ -140,17 +140,14 @@
                         </span>
                     </a>
 
+                    <button class="logout-button" id="logout-button" href="#">logout</button>
                     <a style="display: none !important;" id="profile-wrapper"
                         class="px-4 py-2 bg-indigo-100 rounded-md flex items-center space-x-2 text-indigo-500 hover:bg-indigo-200"
                         href="profile.html">
-                        <svg class="h-5 w-5 fill-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <span id="profile-name" class="hidden sm:block"></span>
-                            <img class="rounded-full w-10 h-10 border-2 border-indigo-200 hover:border-indigo-300"
-                                src="images/pfp.jpg" alt srcset>
-                        </svg>
+                        <span id="profile-name" class="hidden sm:block"></span>
+                        <img class="rounded-full w-10 h-10 border-2 border-indigo-200 hover:border-indigo-300"
+                            src="images/pfp.jpg" alt srcset>
                     </a>
-
                     <a style="display: none !important;" id="login-button" href="auth.html">Login</a>
                 </div>
 
@@ -198,6 +195,17 @@
                         padding: 0;
                         text-align: center;
                         font-style: bold;
+                    }
+
+                    .logout-button {
+                        display: inline-block;
+                        padding: 0.75rem 1.25rem;
+                        border-radius: 0.4rem;
+                        background: orange;
+                    }
+
+                    .logout-button:hover {
+                        opacity: 0.75;
                     }
                 </style>
             </head>
