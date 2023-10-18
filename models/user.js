@@ -1,8 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema({
-  surname: String,
   firstName: String,
+  lastName: String,
+  dob: String,
   email: { type: String, unique: true },
   password: String,
 });

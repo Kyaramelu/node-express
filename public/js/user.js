@@ -17,6 +17,7 @@ function register(firstName, lastName, dob, email, password) {
       localStorage.setItem("user", (JSON.stringify(data.user)))
       updateUserState()
 
+      window.location.href = "https://caramello.space/";
       console.log('Success:', data)
     })
     .catch((error) => {

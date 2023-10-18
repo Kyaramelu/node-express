@@ -44,7 +44,8 @@ app.use(session);
 app.post('/register', async (req, res) => {
   try {
     const user = await User.create({
-      name: req.body.name,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       email: req.body.email,
       dob: req.body.dob,
       password: req.body.password
