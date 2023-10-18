@@ -36,7 +36,7 @@ function updateUserState() {
   if (user) {
     console.log("A user is logged in.")
 
-    document.getElementById("profile-name").textContent = user.email
+    document.getElementById("profile-name").textContent = `${user.firstName} ${user.lastName}`
     profile.style.display = "flex"
     logout.style.display = "block"
   } else {
