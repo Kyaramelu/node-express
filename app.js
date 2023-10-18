@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import express from "express";
 import session from "express-session";
 import cors from "cors"
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
 
 mongoose.connect("mongodb://localhost:27017/myapp")
   .then(() => {
@@ -13,7 +15,10 @@ mongoose.connect("mongodb://localhost:27017/myapp")
     console.log("Failed to connect to database.")
   })
 
-let app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
@@ -86,4 +91,5 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.listen(47335, () => console.log('Server started on port 3000'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.listen(3000, () => console.log('Server started on port 3000'));
