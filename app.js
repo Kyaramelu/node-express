@@ -49,6 +49,7 @@ app.post('/register', async (req, res) => {
       password: req.body.password
     })
 
+    delete user.password
     res.status(200).json({ status: "success", message: "Successfully created user account.", user: user })
   } catch (err) {
     console.log(err)
@@ -58,7 +59,8 @@ app.post('/register', async (req, res) => {
 
 app.get('/user', async (req, res) => {
   try {
-    const user = req.session.user
+    const email = req.session.user.email
+    const user = User.findOne({ email: email }).select("-password")
 
     if (!user) {
       res.status(404).json({ status: "fail", message: "No user was found, please login first." })
