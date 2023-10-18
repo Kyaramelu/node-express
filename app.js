@@ -2,6 +2,7 @@ import bodyParser from "body-parser"
 import User from "./models/user.js"
 import mongoose from "mongoose";
 import express from "express";
+import session from "express-session";
 import cors from "cors"
 
 mongoose.connect("mongodb://localhost:27017/myapp")
@@ -13,8 +14,14 @@ mongoose.connect("mongodb://localhost:27017/myapp")
   })
 
 let app = express();
+
 app.use(bodyParser.json());
 app.use(cors())
+app.use(session({
+  secret: '87za4dza84d8a4zd5az1zad51daz',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.post('/register', async (req, res) => {
   try {
@@ -31,7 +38,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-app.get('/user/:email', async (req, res) => {
+app.get('/user', async (req, res) => {
   try {
     const email = req.params.email;
     const user = await User.findOne({ email: email }).select("-password")
@@ -48,4 +55,28 @@ app.get('/user/:email', async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Server started on port 3000'));
+app.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      res.status(404).json({ status: "fail", message: "No user matching the email was found." });
+      return;
+    }
+
+    if (user.password !== password) {
+      res.status(401).json({ status: "fail", message: "Invalid password." });
+      return;
+    }
+
+    req.session.user = user;
+
+    res.status(200).json({ status: "success", message: "Successfully logged in.", user: user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ status: "error", message: "We ran into an error." });
+  }
+});
+
+app.listen(47335, () => console.log('Server started on port 3000'));
