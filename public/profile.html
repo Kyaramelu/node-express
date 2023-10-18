@@ -276,9 +276,9 @@
         location.href = "https://caramello.space/auth.html"
     }
     else {
-        document.getElementById("firstname-display").innerText = `Имя: ${user.email}`
-        document.getElementById("lastname-display").innerText = `Фамилия: ${user.email}`
-        document.getElementById("middlename-display").innerText = `Отчество: ${user.email}`
+        document.getElementById("firstname-display").innerText = `Имя: ${user.firstName}`
+        document.getElementById("lastname-display").innerText = `Фамилия: ${user.lastName}`
+        document.getElementById("middlename-display").innerText = `Отчество: ${user.middlename || 'не предоставлен'}`
         document.getElementById("email-display").innerText = `Почта: ${user.email}`
 
         document.getElementById("school-display").innerText = `${user?.school || 'не предоставлен'}`
