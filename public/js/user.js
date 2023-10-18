@@ -36,6 +36,7 @@ function updateUserState() {
 
     document.getElementById("profile-name").textContent = user.email
     profile.style.display = "flex"
+    logout.style.display = "block"
   } else {
     console.log("No user logged in.")
     login.style.display = "block"
@@ -45,16 +46,26 @@ function updateUserState() {
 function logout() {
   fetch('https://caramello.space/logout', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', // set the content type to JSON
+    },
   })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       if (data.status === "success") {
-        localStorage.removeItem("user")
-        location.href = "https://caramello.space/"
+        localStorage.removeItem("user");
+        window.location.href = "https://caramello.space/";
+      } else {
+        console.error('Logout failed:', data.error || 'Unknown error');
       }
     })
-    .catch((error) => {
-      console.error('Error:', error)
+    .catch(error => {
+      console.error('Fetch error:', error);
     });
 }
 
