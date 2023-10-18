@@ -14,7 +14,7 @@ function register(firstName, lastName, dob, email, password) {
   })
     .then(response => response.json())
     .then(data => {
-      saveData(JSON.stringify(data.user))
+      localStorage.setItem("user"(JSON.stringify(data.user)))
       updateUser()
 
       console.log('Success:', data)
