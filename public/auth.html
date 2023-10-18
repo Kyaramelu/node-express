@@ -1,50 +1,49 @@
-<!-- component -->
-<div class="bg-gray-100 flex justify-center items-center h-screen">
-  <!-- Left: Image -->
-  <div class="w-1/2 h-screen hidden lg:block">
-    <img src="https://placehold.co/800x/667fff/ffffff.png?text=Your+Image&font=Montserrat" alt="Placeholder Image"
-      class="object-cover w-full h-full">
-  </div>
-  <!-- Right: Login Form -->
-  <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
-    <h1 class="text-2xl font-semibold mb-4">Login</h1>
-    <form id="login" action="#" method="POST">
-      <!-- Email Input -->
-      <div class="mb-4">
-        <label for="email" class="block text-gray-600">Email</label>
-        <input type="text" id="email" name="email"
-          class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-          autocomplete="off">
-      </div>
-      <!-- Password Input -->
-      <div class="mb-4">
-        <label for="password" class="block text-gray-600">Password</label>
-        <input type="password" id="password" name="password"
-          class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-          autocomplete="off">
-      </div>
-      <!-- Remember Me Checkbox -->
-      <div class="mb-4 flex items-center">
-        <input type="checkbox" id="remember" name="remember" class="text-blue-500">
-        <label for="remember" class="text-gray-600 ml-2">Remember Me</label>
-      </div>
-      <!-- Forgot Password Link -->
-      <div class="mb-6 text-blue-500">
-        <a href="#" class="hover:underline">Forgot Password?</a>
-      </div>
-      <!-- Login Button -->
-      <button type="submit"
-        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Represent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style/auth.css" rel="stylesheet">
+  <title>Малая Академия Наук</title>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style/auth.css">
+
+</head>
+
+<body class="font-montserrat">
+  <!-- partial:index.partial.html -->
+  <div id="login-form-wrap">
+    <h2>Вход</h2>
+    <form id="login-form">
+      <p>
+        <input type="text" id="username" name="username" placeholder="Почта" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input type="password" id="pass" name="pass" placeholder="Пароль" required><i
+          class="validation"><span></span><span></span></i>
+      </p>
+      <p>
+        <input type="submit" id="login" value="Login">
+      </p>
     </form>
-    <!-- Sign up  Link -->
-    <div class="mt-6 text-blue-500 text-center">
-      <a href="registration.html" class="hover:underline">Sign up Here</a>
-    </div>
-  </div>
-</div>
+    <div id="create-account-wrap">
+      <p>У вас нету аккаунта? <a href="registration.html">Создать аккаунт</a>
+      <p>
+    </div><!--create-account-wrap-->
+  </div><!--login-form-wrap-->
+  <!-- partial -->
+
+</body>
+
+</html>
 
 <script>
-
   document.getElementById('login').addEventListener('submit', function (event) {
     event.preventDefault();
 
