@@ -77,7 +77,7 @@
         return response.json();
       })
       .then(data => {
-        if (data.success === 'success') {
+        if (data.status === 'success') {
           localStorage.setItem("user", JSON.stringify(data.user))
           location.href = 'https://caramello.space/';
           console.log('Success:', data);
