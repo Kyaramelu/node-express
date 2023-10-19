@@ -159,6 +159,9 @@
 
             <body>
                 <div class="wrapper">
+                    <div class="error-message-container">
+                        <p id="error-message"></p>
+                    </div>
                     <form id="registraion" action="#">
                         <div class="input-box">
                             <input id="first-name" type="text" placeholder="Введите имя" required>
@@ -176,7 +179,7 @@
                             <input id="password" type="password" placeholder="Создайте пароль" required>
                         </div>
                         <div class="input-box">
-                            <input type="password" placeholder="Подтвердите пароль" required>
+                            <input id="password-confirm" type="password" placeholder="Подтвердите пароль" required>
                         </div>
                         <div class="policy">
                             <input type="checkbox">
@@ -202,7 +205,17 @@
         let lastName = document.getElementById('last-name').value;
         let dob = document.getElementById('dob').value;
         let email = document.getElementById('email').value;
+
         let password = document.getElementById('password').value;
+        let confirmpassword = document.getElementById('password-confirm').value;
+
+        if (confirmpassword !== password) {
+            const errorMessageElement = document.getElementById('error-message');
+            errorMessageElement.innerHTML = "ваши пароли не совпали, попробуйте еще раз.";
+            errorMessageElement.style.color = 'red';
+            errorMessageElement.style.marginTop = '10px';
+            return
+        }
 
         register(firstName, lastName, dob, email, password)
     });

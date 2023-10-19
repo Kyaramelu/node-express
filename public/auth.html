@@ -8,6 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="style/auth.css" rel="stylesheet">
   <title>Малая Академия Наук</title>
+
+  <style>
+    .error-message-container {
+      padding: 1.25rem;
+    }
+  </style>
 </head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -19,6 +25,9 @@
   <!-- partial:index.partial.html -->
   <div id="login-form-wrap">
     <h2>Вход</h2>
+    <div class="error-message-container">
+      <p id="error-message"></p>
+    </div>
     <form id="login-form">
       <p>
         <input type="text" id="email" name="email" placeholder="Почта" required><i
@@ -65,18 +74,27 @@
       }),
     })
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
         return response.json();
       })
       .then(data => {
-        localStorage.setItem("user", JSON.stringify(data.user))
-        location.href = 'https://caramello.space/';
-        console.log('Success:', data);
+        if (data.success === 'success') {
+          localStorage.setItem("user", JSON.stringify(data.user))
+          location.href = 'https://caramello.space/';
+          console.log('Success:', data);
+          return
+        }
+        showErrorMessage("Неверный адрес электронной почты или пароль. Пожалуйста, попробуйте еще раз.")
       })
       .catch((error) => {
+        showErrorMessage("Произошла ошибка. Пожалуйста, повторите попытку позже.")
         console.error('Error:', error);
       });
+  }
+
+  function showErrorMessage(message) {
+    const errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.innerHTML = message;
+    errorMessageElement.style.color = 'red';
+    errorMessageElement.style.marginTop = '10px';
   }
 </script>
