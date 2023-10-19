@@ -259,7 +259,7 @@
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text">Сегодня:</div>
           <div class="text-left blue-text">07:30-8:00</div>
-          <div class="text-center">Подъём, гигиенические процедуры</div>
+          <div class="text-center">Подъем</div>
           <div class="text-center"></div>
         </div>
 
@@ -272,21 +272,49 @@
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
-          <div class="text-left blue-text">08:30-09:00</div>
+          <div class="text-left blue-text">08:45-09:00</div>
           <div class="text-center">Завтрак</div>
           <div class="text-center"></div>
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
-          <div class="text-left blue-text">09:30-13:00</div>
-          <div class="text-center">Работа проектных групп (полевые выезды по отдельному графику)</div>
+          <div class="text-left blue-text">09:00-10:30</div>
+          <div class="text-center">Первая лига</div>
+          <div class="text-center"></div>
+        </div>
+
+        <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
+          <div class="text-left blue-text"></div>
+          <div class="text-left blue-text">11:00-11:30</div>
+          <div class="text-center">Репетиция Demoday</div>
+          <div class="text-center"></div>
+        </div>
+
+        <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
+          <div class="text-left blue-text"></div>
+          <div class="text-left blue-text">11:30-13:00</div>
+          <div class="text-center">DEMODAY</div>
+          <div class="text-center"></div>
+        </div>
+
+        <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
+          <div class="text-left blue-text"></div>
+          <div class="text-left blue-text">13:00-14:00</div>
+          <div class="text-center">Обед</div>
           <div class="text-center"></div>
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
           <div class="text-left blue-text">14:30-16:00</div>
+          <div class="text-center">Официальное закрытие</div>
+          <div class="text-center"></div>
+        </div>
+
+        <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
+          <div class="text-left blue-text"></div>
+          <div class="text-left blue-text">16:00-16:30</div>
           <div class="text-center">Полдник</div>
           <div class="text-center"></div>
         </div>
@@ -294,7 +322,7 @@
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
           <div class="text-left blue-text">16:30-18:00</div>
-          <div class="text-center">Работа проектных групп (полевые выезды по отдельному графику)</div>
+          <div class="text-center">Сдача офисов</div>
           <div class="text-center"></div>
         </div>
 
@@ -307,22 +335,29 @@
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
-          <div class="text-left blue-text">19:00-19:30</div>
-          <div class="text-center">Свободное время</div>
+          <div class="text-left blue-text">19:00-20:00</div>
+          <div class="text-center">Проверка офисов</div>
           <div class="text-center"></div>
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
-          <div class="text-left blue-text">19:30-21:00</div>
-          <div class="text-center">Мероприятие</div>
+          <div class="text-left blue-text">20:00-20:30</div>
+          <div class="text-center">Общая рефлексия</div>
           <div class="text-center"></div>
         </div>
 
         <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
           <div class="text-left blue-text"></div>
-          <div class="text-left blue-text">21:00-21:30</div>
+          <div class="text-left blue-text">20:30-22:30</div>
           <div class="text-center">Поздний ужин</div>
+          <div class="text-center"></div>
+        </div>
+
+        <div class="invoice-table-row flex items-center gap-x-3 px-10 py-4">
+          <div class="text-left blue-text"></div>
+          <div class="text-left blue-text">22:30</div>
+          <div class="text-center">Отбой</div>
           <div class="text-center"></div>
         </div>
       </div>
@@ -373,24 +408,44 @@
         description: "Зарядка",
       },
       {
-        start: new Date(2023, 9, 19, 8, 30, 0),
+        start: new Date(2023, 9, 19, 8, 45, 0),
         end: new Date(2023, 9, 19, 9, 0, 0),
         description: "Завтрак",
       },
       {
-        start: new Date(2023, 9, 19, 9, 30, 0),
+        start: new Date(2023, 9, 19, 9, 0, 0),
+        end: new Date(2023, 9, 19, 10, 30, 0),
+        description: "Первая лига",
+      },
+      {
+        start: new Date(2023, 9, 19, 11, 0, 0),
+        end: new Date(2023, 9, 19, 11, 30, 0),
+        description: "Репетиция Demoday",
+      },
+      {
+        start: new Date(2023, 9, 19, 11, 30, 0),
         end: new Date(2023, 9, 19, 13, 0, 0),
-        description: "Работа проектных групп (полевые выезды по отдельному графику)",
+        description: "DEMODAY",
+      },
+      {
+        start: new Date(2023, 9, 19, 13, 0, 0),
+        end: new Date(2023, 9, 19, 14, 0, 0),
+        description: "Обед",
       },
       {
         start: new Date(2023, 9, 19, 14, 30, 0),
         end: new Date(2023, 9, 19, 16, 0, 0),
+        description: "Официальное закрытие",
+      },
+      {
+        start: new Date(2023, 9, 19, 16, 0, 0),
+        end: new Date(2023, 9, 19, 16, 30, 0),
         description: "Полдник",
       },
       {
         start: new Date(2023, 9, 19, 16, 30, 0),
         end: new Date(2023, 9, 19, 18, 0, 0),
-        description: "Работа проектных групп (полевые выезды по отдельному графику)",
+        description: "Сдача офисов",
       },
       {
         start: new Date(2023, 9, 19, 18, 0, 0),
@@ -399,18 +454,23 @@
       },
       {
         start: new Date(2023, 9, 19, 19, 0, 0),
-        end: new Date(2023, 9, 19, 19, 30, 0),
-        description: "Свободное время",
+        end: new Date(2023, 9, 19, 20, 0, 0),
+        description: "Проверка офисов",
       },
       {
-        start: new Date(2023, 9, 19, 19, 30, 0),
-        end: new Date(2023, 9, 19, 21, 0, 0),
-        description: "Мероприятие",
+        start: new Date(2023, 9, 19, 20, 0, 0),
+        end: new Date(2023, 9, 19, 20, 30, 0),
+        description: "Общая рефлексия",
       },
       {
-        start: new Date(2023, 9, 19, 21, 0, 0),
-        end: new Date(2023, 9, 19, 21, 30, 0),
+        start: new Date(2023, 9, 19, 20, 30, 0),
+        end: new Date(2023, 9, 19, 22, 30, 0),
         description: "Поздний ужин",
+      },
+      {
+        start: new Date(2023, 9, 19, 22, 30, 0),
+        end: new Date(2023, 9, 19, 23, 59, 59),
+        description: "Отбой",
       },
     ];
 
